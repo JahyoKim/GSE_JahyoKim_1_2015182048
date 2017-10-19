@@ -30,8 +30,10 @@ void RenderScene(void) // 프레임당 1회 호출
 
 	// Renderer Test
 
-	g_Renderer->DrawSolidRect(pObject->GetPosition().x, pObject->GetPosition().y, pObject->GetPosition().z, 40, 1, 0, 1, 1);
-	g_Renderer->DrawSolidRect(0, 0, 0, 1, 1, 0, 1, 1);
+	g_Renderer->DrawSolidRect(pObject->GetPosition().x, pObject->GetPosition().y, pObject->GetPosition().z, 
+		pObject->GetSize().s, pObject->GetColor().r, pObject->GetColor().g, pObject->GetColor().b, 1);
+	
+	g_Renderer->DrawSolidRect(0, 0, 0, 40, 1, 0, 1, 1);
 
 
 	glutSwapBuffers();

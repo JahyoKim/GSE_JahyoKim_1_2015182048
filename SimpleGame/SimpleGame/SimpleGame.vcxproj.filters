@@ -19,6 +19,9 @@
     <Filter Include="Object">
       <UniqueIdentifier>{bc13e113-472a-4167-bc4f-bf61d6346fb3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SceneMgr">
+      <UniqueIdentifier>{320b70c4-7294-40d3-89aa-ba752e2d22e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -36,6 +39,9 @@
     <ClInclude Include="Object.h">
       <Filter>Object</Filter>
     </ClInclude>
+    <ClInclude Include="SceneMgr.h">
+      <Filter>SceneMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -49,6 +55,9 @@
     </ClCompile>
     <ClCompile Include="Object.cpp">
       <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMgr.cpp">
+      <Filter>SceneMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
