@@ -11,35 +11,17 @@ Object::Object()
 	m_Velocity.x = 20.0f;
 	m_Velocity.y = 10.0f;
 	m_Velocity.z = 0.0f;
-	
-
 }
 Object::~Object()
 {
 
 }
-FLOAT3 Object::GetPosition()
-{
-	return m_Position;
-}
-FLOAT4 Object::GetSize()
-{
-	return m_Size;
-}
-FLOAT4 Object::GetColor()
-{
-	return m_Color;
-
-}
 
 void Object::update()
 {
-
 	m_Position.x += m_Velocity.x;
 	m_Position.y += m_Velocity.y;
 	m_Position.z += m_Velocity.z;
-
-
 }
 
 

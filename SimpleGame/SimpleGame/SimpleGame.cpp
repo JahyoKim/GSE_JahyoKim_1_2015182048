@@ -10,6 +10,7 @@ but WITHOUT ANY WARRANTY.
 
 #include "stdafx.h"
 #include "Object.h"
+#include "SceneMgr.h"
 #include <iostream>
 #include "Dependencies\glew.h"
 #include "Dependencies\freeglut.h"
@@ -22,6 +23,8 @@ Renderer *g_Renderer = NULL;
 
 Object * pObject = NULL;
 
+SceneMgr *pSceneMgr = NULL;
+
 
 void RenderScene(void) // 프레임당 1회 호출
 {
@@ -30,11 +33,12 @@ void RenderScene(void) // 프레임당 1회 호출
 
 	// Renderer Test
 
-	g_Renderer->DrawSolidRect(pObject->GetPosition().x, pObject->GetPosition().y, pObject->GetPosition().z, 
-		pObject->GetSize().s, pObject->GetColor().r, pObject->GetColor().g, pObject->GetColor().b, 1);
+	// g_Renderer->DrawSolidRect(pObject->GetPosition().x, pObject->GetPosition().y, pObject->GetPosition().z, 
+		//pObject->GetSize().s, pObject->GetColor().r, pObject->GetColor().g, pObject->GetColor().b, 1.0);
 	
-	g_Renderer->DrawSolidRect(0, 0, 0, 40, 1, 0, 1, 1);
+	g_Renderer->DrawSolidRect(0, 0, 0, 1, 1, 0, 1, 1);
 
+	pSceneMgr->drawObject();
 
 	glutSwapBuffers();
 }
@@ -74,7 +78,8 @@ void Update(int value)
 
 int main(int argc, char **argv)
 {
-	pObject = new Object;
+	// pObject = new Object;
+	
 	// Initialize GL things
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
@@ -98,17 +103,17 @@ int main(int argc, char **argv)
 	{
 		std::cout << "Renderer could not be initialized.. \n";
 	}
-
+	pSceneMgr = new SceneMgr;
 	glutDisplayFunc(RenderScene);
 	glutIdleFunc(Idle);
 	glutKeyboardFunc(KeyInput);
 	glutMouseFunc(MouseInput);
 	glutSpecialFunc(SpecialKeyInput);
-	glutTimerFunc(100, Update, 1); // 1초 주기로 업데이트
+	//glutTimerFunc(100, Update, 1); // 1초 주기로 업데이트
 	glutMainLoop();
 
 	delete g_Renderer;
-	delete pObject;
+	//delete pObject;
 	return 0;
 }
 
