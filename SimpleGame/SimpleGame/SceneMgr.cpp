@@ -2,6 +2,7 @@
 #include "SceneMgr.h"
 
 
+
 SceneMgr::SceneMgr()
 {
 	m_renderer = new Renderer(500, 500);
@@ -9,8 +10,15 @@ SceneMgr::SceneMgr()
 	{
 		m_objects[i] = new Object;
 		m_objects[i]->SetPosition(rand()%500 - 250, rand() % 500 - 250, 0.0);
-		m_objects[i]->SetSize(20.0);
+		m_objects[i]->SetSize(10.0);
 		m_objects[i]->SetColor(1.0, 1.0, 1.0);
+		m_objects[i]->SetMove(10.0f, 10.0f, 0.0f);
+		
+
+		// m_Position.x += m_Move.moveX;
+		// m_Position.y += m_Move.moveY;
+		// m_Position.z += m_Move.moveZ;
+		
 
 	}
 

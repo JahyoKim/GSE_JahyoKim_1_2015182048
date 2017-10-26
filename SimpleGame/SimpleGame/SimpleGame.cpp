@@ -21,7 +21,7 @@ using namespace std;
 
 Renderer *g_Renderer = NULL;
 
-Object * pObject = NULL;
+// Object * pObject = NULL;
 
 SceneMgr *pSceneMgr = NULL;
 
@@ -50,13 +50,13 @@ void Idle(void)
 
 void MouseInput(int button, int state, int x, int y)
 {
-	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
-	{
-		cout << x << "\t" << y << endl;
-
-		pObject->SetPosition(x-250, -y+250, 0);
-
-	}
+	// if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+	// {
+	// 	cout << x << "\t" << y << endl;
+	// 
+	// 	 pObject->SetPosition(x-250, -y+250, 0);
+	// 
+	// }
 	RenderScene();
 }
 
@@ -72,7 +72,7 @@ void SpecialKeyInput(int key, int x, int y)
 
 void Update(int value)
 {
-	pObject->update();
+	// pObject->update();
 	glutTimerFunc(1000, Update, 1);
 }
 
