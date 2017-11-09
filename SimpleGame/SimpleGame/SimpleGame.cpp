@@ -16,15 +16,16 @@ but WITHOUT ANY WARRANTY.
 #include "Dependencies\freeglut.h"
 
 #include "Renderer.h"
+#include <chrono> // 함수를 수행하는데 걸리는 시간
 
 using namespace std;
 
 Renderer *g_Renderer = NULL;
 
-// Object * pObject = NULL;
 
 SceneMgr *pSceneMgr = NULL;
 
+auto start = chrono::system_clock::now();
 
 void RenderScene(void) // 프레임당 1회 호출
 {
@@ -36,7 +37,7 @@ void RenderScene(void) // 프레임당 1회 호출
 	// g_Renderer->DrawSolidRect(pObject->GetPosition().x, pObject->GetPosition().y, pObject->GetPosition().z, 
 		//pObject->GetSize().s, pObject->GetColor().r, pObject->GetColor().g, pObject->GetColor().b, 1.0);
 	
-	g_Renderer->DrawSolidRect(0, 0, 0, 1, 1, 0, 1, 1);
+	g_Renderer->DrawSolidRect(0, 0, 0, 20, 1, 0, 1, 1);
 
 	pSceneMgr->drawObject();
 
@@ -72,13 +73,13 @@ void SpecialKeyInput(int key, int x, int y)
 
 void Update(int value)
 {
-	// pObject->update();
 	glutTimerFunc(1000, Update, 1);
 }
 
 int main(int argc, char **argv)
 {
-	// pObject = new Object;
+	pSceneMgr = new SceneMgr;
+	
 	
 	// Initialize GL things
 	glutInit(&argc, argv);
@@ -113,7 +114,9 @@ int main(int argc, char **argv)
 	glutMainLoop();
 
 	delete g_Renderer;
-	//delete pObject;
+
+	delete pSceneMgr;
+
 	return 0;
 }
 

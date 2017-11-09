@@ -9,13 +9,16 @@ private:
 	Object *m_objects[MAX_OBJECTS_COUNT];
 	Renderer *m_renderer;
 
+	int m_windowWidth;
+	int m_windowHeight;
+
 public:
-	SceneMgr();
+	SceneMgr(int width, int height);
 	~SceneMgr();
 
 	
 
 	void drawObject();
-	void update();
+	void updateObject();
 
 };
