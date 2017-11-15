@@ -13,6 +13,7 @@ private:
 	int m_windowHeight;
 
 public:
+	SceneMgr();
 	SceneMgr(int width, int height);
 	~SceneMgr();
 
