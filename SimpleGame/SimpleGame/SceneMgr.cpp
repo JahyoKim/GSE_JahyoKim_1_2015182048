@@ -3,35 +3,36 @@
 
 SceneMgr::SceneMgr()
 {
-
 }
 
 SceneMgr::SceneMgr(int width, int height)
 {
 	m_renderer = new Renderer(width, height);
 
-	//for (int i = 0; i < MAX_OBJECTS_COUNT; ++i)
-	//{
-	//	m_objects[i] = new Object;
-	//	m_objects[i]->SetPosition(rand()%500 - 250, rand() % 500 - 250, 0.0);
-	//	m_objects[i]->SetSize(10.0);
-	//	m_objects[i]->SetColor(1.0, 1.0, 1.0);
-	//	m_objects[i]->update(100.0);
-	//	
-	//
-	//}
-
-	m_windowWidth = width;
-	m_windowHeight = height;
-
-	for (int i = 0; i < MAX_OBJECTS_COUNT; i++)
+	for (int i = 0; i < MAX_OBJECTS_COUNT; ++i)
 	{
 		m_objects[i] = NULL;
 	}
-
 }
 SceneMgr::~SceneMgr()
 {
+}
+
+void SceneMgr::initObject(float x, float y)
+{
+
+
+	for (int i = 0; i < MAX_OBJECTS_COUNT; ++i)
+	{
+		if (m_objects[i] == NULL) {
+			m_objects[i] = new Object;
+			m_objects[i]->SetPosition(x, y, 0.0);
+			m_objects[i]->SetSize(10.0);
+			m_objects[i]->SetColor(1.0, 1.0, 1.0);
+			break;
+		}
+		
+	}
 }
 
 void SceneMgr::drawObject()
@@ -48,8 +49,15 @@ void SceneMgr::drawObject()
 	}
 }
 
-void SceneMgr::updateObject()
+void SceneMgr::updateObject(float elapsedTime)
 {
+	for (int i = 0; i < MAX_OBJECTS_COUNT; ++i)
+	{
+		if (m_objects[i] != NULL)
+		{
+			m_objects[i]->update(elapsedTime);
+		}
+	}
 
 }
 

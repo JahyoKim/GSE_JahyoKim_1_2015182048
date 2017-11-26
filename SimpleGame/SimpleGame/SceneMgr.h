@@ -17,9 +17,8 @@ public:
 	SceneMgr(int width, int height);
 	~SceneMgr();
 
-	
-
+	void initObject(float x, float y);
 	void drawObject();
-	void updateObject();
+	void updateObject(float elapsedTime);
 
 };

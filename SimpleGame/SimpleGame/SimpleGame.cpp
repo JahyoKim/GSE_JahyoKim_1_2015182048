@@ -12,20 +12,18 @@ but WITHOUT ANY WARRANTY.
 #include "Object.h"
 #include "SceneMgr.h"
 #include <iostream>
+#include <Windows.h>
 #include "Dependencies\glew.h"
 #include "Dependencies\freeglut.h"
 
 #include "Renderer.h"
-#include <chrono> // 함수를 수행하는데 걸리는 시간
 
 using namespace std;
 
 Renderer *g_Renderer = NULL;
+SceneMgr *g_SceneMgr = NULL;
 
-
-SceneMgr *pSceneMgr = NULL;
-
-auto start = chrono::system_clock::now();
+auto g_start = 0;
 
 void RenderScene(void) // 프레임당 1회 호출
 {
@@ -33,13 +31,15 @@ void RenderScene(void) // 프레임당 1회 호출
 	glClearColor(0.0f, 0.3f, 0.3f, 1.0f);
 
 	// Renderer Test
+	//g_Renderer->DrawSolidRect(0, 0, 0, 20, 1, 0, 1, 1);
 
-	// g_Renderer->DrawSolidRect(pObject->GetPosition().x, pObject->GetPosition().y, pObject->GetPosition().z, 
-		//pObject->GetSize().s, pObject->GetColor().r, pObject->GetColor().g, pObject->GetColor().b, 1.0);
-	
-	g_Renderer->DrawSolidRect(0, 0, 0, 20, 1, 0, 1, 1);
+	auto currentTime = timeGetTime();
+	auto elapsedTime = currentTime - g_start;
+	g_start = currentTime;
 
-	pSceneMgr->drawObject();
+	g_SceneMgr->updateObject(elapsedTime);
+	g_SceneMgr->drawObject();
+
 
 	glutSwapBuffers();
 }
@@ -51,13 +51,18 @@ void Idle(void)
 
 void MouseInput(int button, int state, int x, int y)
 {
-	// if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
-	// {
-	// 	cout << x << "\t" << y << endl;
-	// 
-	// 	 pObject->SetPosition(x-250, -y+250, 0);
-	// 
-	// }
+	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+	{
+		cout << x << "\t" << y << endl;
+
+		
+		g_SceneMgr->initObject(x - 250, -y + 250);
+		
+	
+		 // pObject->SetPosition(x-250, -y+250, 0);
+		
+	
+	}
 	RenderScene();
 }
 
@@ -78,9 +83,6 @@ void Update(int value)
 
 int main(int argc, char **argv)
 {
-	pSceneMgr = new SceneMgr;
-	
-	
 	// Initialize GL things
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
@@ -100,22 +102,26 @@ int main(int argc, char **argv)
 
 	// Initialize Renderer
 	g_Renderer = new Renderer(500, 500);
+	g_SceneMgr = new SceneMgr(500, 500);
+
+	
 	if (!g_Renderer->IsInitialized())
 	{
 		std::cout << "Renderer could not be initialized.. \n";
 	}
-	pSceneMgr = new SceneMgr;
+	
 	glutDisplayFunc(RenderScene);
 	glutIdleFunc(Idle);
 	glutKeyboardFunc(KeyInput);
 	glutMouseFunc(MouseInput);
 	glutSpecialFunc(SpecialKeyInput);
-	//glutTimerFunc(100, Update, 1); // 1초 주기로 업데이트
+
+	g_start = timeGetTime();
+
 	glutMainLoop();
 
 	delete g_Renderer;
-
-	delete pSceneMgr;
+	delete g_SceneMgr;
 
 	return 0;
 }
