@@ -37,6 +37,7 @@ void RenderScene(void) // 프레임당 1회 호출
 	auto elapsedTime = currentTime - g_start;
 	g_start = currentTime;
 
+	g_SceneMgr->collision();
 	g_SceneMgr->updateObject(elapsedTime);
 	g_SceneMgr->drawObject();
 

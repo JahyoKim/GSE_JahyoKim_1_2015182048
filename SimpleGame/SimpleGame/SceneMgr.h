@@ -20,5 +20,8 @@ public:
 	void initObject(float x, float y);
 	void drawObject();
 	void updateObject(float elapsedTime);
+	void collision();
+	void initColor();
+	bool AABBCollision(float minX, float minY, float maxX, float maxY, float minX1, float minY1, float maxX1, float maxY1);
 
 };

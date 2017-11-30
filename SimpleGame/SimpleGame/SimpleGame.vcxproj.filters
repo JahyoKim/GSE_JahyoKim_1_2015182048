@@ -42,7 +42,7 @@
     <ClInclude Include="SceneMgr.h">
       <Filter>SceneMgr</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Desktop\SimpleGame(추가)\LoadPng.h">
+    <ClInclude Include="LoadPng.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -62,7 +62,7 @@
     <ClCompile Include="SceneMgr.cpp">
       <Filter>SceneMgr</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Desktop\SimpleGame(추가)\LoadPng.cpp">
+    <ClCompile Include="LoadPng.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,6 +83,24 @@
       <Filter>소스 파일\Shaders</Filter>
     </None>
     <None Include="..\..\..\..\..\Desktop\SimpleGame(추가)\Shaders\SolidRectWithTextureSeq.vs">
+      <Filter>소스 파일\Shaders</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Desktop\게임소프트웨어공학\실습 10\Shaders\Particle.fs">
+      <Filter>소스 파일\Shaders</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Desktop\게임소프트웨어공학\실습 10\Shaders\Particle.vs">
+      <Filter>소스 파일\Shaders</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Desktop\게임소프트웨어공학\실습 10\Shaders\SolidRectGauge.fs">
+      <Filter>소스 파일\Shaders</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Desktop\게임소프트웨어공학\실습 10\Shaders\SolidRectGauge.vs">
+      <Filter>소스 파일\Shaders</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Desktop\게임소프트웨어공학\실습 10\Shaders\SolidRectXY.fs">
+      <Filter>소스 파일\Shaders</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Desktop\게임소프트웨어공학\실습 10\Shaders\SolidRectXY.vs">
       <Filter>소스 파일\Shaders</Filter>
     </None>
   </ItemGroup>
